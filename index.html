@@ -16,14 +16,19 @@
             margin: 0;
             padding: 0;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
         .container {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
-            position: relative;
+            width: 90%;
+            max-width: 600px;
         }
         .logo {
             width: 200px;
@@ -57,22 +62,17 @@
             background: #b20710;
             transform: scale(1.1);
         }
-        .download-btn::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.2);
-            transform: skewX(-30deg);
-            transition: left 0.5s ease-in-out;
-        }
-        .download-btn:hover::after {
-            left: 100%;
-        }
         .fade-in {
             animation: fadeIn 2s ease-in;
+        }
+        @media (orientation: landscape) {
+            body {
+                flex-direction: row;
+                justify-content: space-around;
+            }
+            .container {
+                max-width: 50%;
+            }
         }
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -82,93 +82,20 @@
             from { transform: translateY(-50px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
-        .parallax-bg {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: url('https://source.unsplash.com/1600x900/?movie,cinema') center/cover no-repeat;
-            filter: brightness(0.3);
-            z-index: -1;
-            animation: parallaxScroll 10s infinite linear alternate;
-        }
-        @keyframes parallaxScroll {
-            from { transform: translateY(0); }
-            to { transform: translateY(-20px); }
-        }
-        .floating-icons {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
-        .floating-icons img {
-            position: absolute;
-            width: 40px;
-            animation: float 10s infinite;
-        }
-        @keyframes float {
-            0% { transform: translateY(0); opacity: 0.5; }
-            50% { transform: translateY(-20px); opacity: 1; }
-            100% { transform: translateY(0); opacity: 0.5; }
-        }
-        .progress-bar {
-            width: 100%;
-            height: 5px;
-            background: #333;
-            margin-top: 10px;
-        }
-        .progress {
-            height: 5px;
-            width: 0;
-            background: #e50914;
-            transition: width 3s ease;
-        }
-        .ripple {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            opacity: 0;
-            animation: rippleEffect 0.6s linear;
-        }
-        @keyframes rippleEffect {
-            from { transform: scale(1); opacity: 1; }
-            to { transform: scale(4); opacity: 0; }
-        }
     </style>
 </head>
 <body>
-    <div class="parallax-bg"></div>
-    <div class="floating-icons">
-        <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" style="top: 20%; left: 10%; animation-duration: 8s;">
-        <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" style="top: 50%; left: 30%; animation-duration: 12s;">
-        <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" style="top: 80%; left: 70%; animation-duration: 10s;">
-        <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" style="top: 40%; left: 80%; animation-duration: 14s;">
-    </div>
     <div class="container fade-in">
         <header>
             <img src="https://i.ibb.co/jPG09vpp/93685c048f65a023413392ef61745925.png" alt="Neroflix Logo" class="logo">
         </header>
         <main>
-            <h1>Download Your Shows to Watch</h1>
-            <p>100% safe no virus, Download now and you trial today!
+            <h1>Download Your Shows to Watch Offline</h1>
+          <p>100% safe no virus, Download now and you trial today!
                 Save your money from subscription and always have something to watch.</p>
-            <a href="https://od.lk/d/NTBfMjk5NTU0ODFf/neroflix.apk" class="download-btn" onclick="startDownload(event)">Download Now</a>
-            <div class="progress-bar"><div class="progress" id="progress"></div></div>
+            
+            <a href="https://od.lk/d/NTBfMjk5NTU0ODFf/neroflix.apk" class="download-btn">Download Now</a>
         </main>
     </div>
-    <script>
-        function startDownload(event) {
-            let progress = document.getElementById('progress');
-            progress.style.width = '100%';
-            let ripple = document.createElement('span');
-            ripple.classList.add('ripple');
-            ripple.style.left = event.clientX + 'px';
-            ripple.style.top = event.clientY + 'px';
-            document.body.appendChild(ripple);
-            setTimeout(() => ripple.remove(), 600);
-        }
-    </script>
 </body>
 </html>
