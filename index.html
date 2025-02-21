@@ -15,12 +15,12 @@
             text-align: center;
             margin: 0;
             padding: 0;
-            overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            overflow: hidden;
         }
         .container {
             display: flex;
@@ -68,10 +68,26 @@
         @media (orientation: landscape) {
             body {
                 flex-direction: row;
-                justify-content: space-around;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
             }
             .container {
-                max-width: 50%;
+                max-width: 45%;
+                text-align: left;
+            }
+            .logo {
+                width: 150px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            p {
+                font-size: 1em;
+            }
+            .download-btn {
+                font-size: 1.2em;
+                padding: 12px 24px;
             }
         }
         @keyframes fadeIn {
@@ -91,7 +107,7 @@
         </header>
         <main>
             <h1>Download Your Shows to Watch Offline</h1>
-          <p>100% safe no virus, Download now and you trial today!
+            <p>100% safe no virus, Download now and start your trial today!
                 Save your money from subscription and always have something to watch.</p>
             
             <a href="https://od.lk/d/NTBfMjk5NTU0ODFf/neroflix.apk" class="download-btn">Download Now</a>
