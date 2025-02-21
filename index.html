@@ -8,8 +8,8 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
         
+        /* General Styles */
         body {
-            background: linear-gradient(45deg, #141414, #1c1c1c);
             color: #fff;
             font-family: 'Poppins', sans-serif;
             text-align: center;
@@ -21,30 +21,46 @@
             align-items: center;
             height: 100vh;
             overflow: hidden;
+            position: relative;
         }
+
+        /* Video Background */
+        .video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        /* Glassmorphism Effect */
         .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
             width: 90%;
-            max-width: 600px;
+            max-width: 500px;
+            text-align: center;
+            animation: fadeIn 2s ease-in;
         }
+
         .logo {
-            width: 200px;
+            width: 180px;
             margin-bottom: 20px;
             animation: slideIn 1.5s ease-in-out;
         }
-        h1 {
-            font-size: 2.5em;
-            font-weight: bold;
-            animation: fadeIn 2s ease-in;
-        }
+
         p {
             font-size: 1.2em;
             margin-bottom: 20px;
             animation: fadeIn 2.5s ease-in;
         }
+
+        /* Neon Glow Button */
         .download-btn {
             background: #e50914;
             color: white;
@@ -52,64 +68,79 @@
             padding: 15px 30px;
             border: none;
             cursor: pointer;
-            border-radius: 5px;
-            transition: background 0.3s ease, transform 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
             position: relative;
             overflow: hidden;
+            transition: background 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 0 15px rgba(229, 9, 20, 0.8);
         }
+
         .download-btn:hover {
             background: #b20710;
             transform: scale(1.1);
+            box-shadow: 0 0 25px rgba(229, 9, 20, 1);
         }
-        .fade-in {
-            animation: fadeIn 2s ease-in;
+
+        /* Ripple Effect */
+        .download-btn:active::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: rgba(255, 255, 255, 0.2);
+            animation: ripple 0.4s ease-out;
         }
-        @media (orientation: landscape) {
-            body {
-                flex-direction: row;
-                justify-content: center;
-                align-items: center;
-                height: 100vh;
-            }
+
+        @keyframes ripple {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
             .container {
-                max-width: 45%;
-                text-align: left;
+                width: 90%;
+                padding: 20px;
             }
-            .logo {
-                width: 150px;
-            }
-            h1 {
-                font-size: 2em;
-            }
+
             p {
                 font-size: 1em;
             }
+
             .download-btn {
                 font-size: 1.2em;
                 padding: 12px 24px;
             }
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes slideIn {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
     </style>
 </head>
 <body>
+    <!-- Background Video -->
+    <video class="video-bg" autoplay loop muted playsinline>
+        <source src="https://www.videvo.net/videvo_files/converted/2021_04/preview/210413_05_Cinematic_Night_Scene_1080p_007.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
     <div class="container fade-in">
         <header>
             <img src="https://i.ibb.co/jPG09vpp/93685c048f65a023413392ef61745925.png" alt="Neroflix Logo" class="logo">
         </header>
         <main>
-          
-            <p>100% safe no virus, Download now and start your trial today!
-                Save your money from subscription and always have something to watch.</p>
-            
+            <p>100% safe, no viruses! Download now and start your trial today.<br>
+                Save money on subscriptions and always have something to watch.</p>
             <a href="https://od.lk/d/NTBfMjk5NTU0ODFf/neroflix.apk" class="download-btn">Download Now</a>
         </main>
     </div>
